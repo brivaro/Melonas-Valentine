@@ -69,7 +69,7 @@ export const dateTickets: DateTicket[] = [
     id: '9',
     emoji: '🛁',
     title: 'Baño de Espuma',
-    description: 'Baño caliente juntos, muchas burbujas, vino y tal vez algo más...',
+    description: 'Baño caliente juntos, muchas burbujas y tal vez algo más...',
     category: 'Picante',
     image: '/icon/9.png',
   },

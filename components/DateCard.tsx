@@ -119,57 +119,70 @@ const DateCard: React.FC<DateCardProps> = ({ ticket, isCollected, isLocked, unlo
   }
 
   return (
-    <div className="relative w-[85vw] max-w-72 h-[50vh] max-h-96 sm:w-80 sm:h-[28rem] cursor-pointer perspective-1000 group mx-auto" onClick={handleFlip}>
+    <div className="relative w-[90vw] max-w-[22rem] h-[65vh] max-h-[36rem] sm:w-96 sm:h-[34rem] cursor-pointer perspective-1000 group mx-auto" onClick={handleFlip}>
       <motion.div
         className={`w-full h-full relative preserve-3d transition-all duration-500`}
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
       >
         {/* --- FRONT FACE --- */}
-        <div className={`absolute w-full h-full backface-hidden rounded-3xl backdrop-blur-md border shadow-xl flex flex-col items-center justify-center p-6 ${getGlowColor()} transition-colors duration-300`}>
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/60 to-white/20 pointer-events-none" />
+        {/* --- FRONT FACE --- */}
+        <div className={`absolute w-full h-full backface-hidden rounded-3xl shadow-xl overflow-hidden flex flex-col ${getGlowColor()} !bg-white transition-colors duration-300`}>
 
-
-          <div className="z-10 mb-6 drop-shadow-lg filter animate-bounce-slow relative">
+          {/* Top Image Section */}
+          <div className="relative w-full h-[60%] bg-pink-50 overflow-hidden rounded-b-[5rem] group-hover:h-[65%] transition-all duration-500 ease-in-out">
             {ticket.image ? (
               <img
                 src={ticket.image}
                 alt={ticket.title}
-                className="w-48 h-48 object-cover rounded-full border-4 border-white shadow-md mx-auto"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
             ) : (
-              <div className="text-8xl">
-                {ticket.emoji}
+              <div className="w-full h-full flex items-center justify-center bg-valentine-100/50">
+                <span className="text-9xl filter drop-shadow-md animate-bounce-slow">{ticket.emoji}</span>
               </div>
             )}
-          </div>
-          <div className="z-10 text-center relative">
-            <h3 className="font-handwritten text-3xl text-slate-800 tracking-wide rotate-[-2deg]">
-              {ticket.category === 'Picante' ? 'Solo para ti...' : 'Vale por...'}
-            </h3>
-            <div className="mt-3 w-20 h-1.5 bg-valentine-400 mx-auto rounded-full opacity-60"></div>
-          </div>
 
-          {/* Decorative corner stamp */}
-          <div className="absolute top-4 right-4 opacity-60">
-            <Heart className="w-6 h-6 text-valentine-500 fill-valentine-200" />
-          </div>
+            {/* Gradient Overlay for texture */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-80" />
 
-          {/* Indicators */}
-          {isCollected && (
-            <div className="absolute top-4 left-4 bg-green-100/80 backdrop-blur-sm p-1.5 rounded-full border border-green-200 shadow-sm" title="¡Ya descubierto!">
-              <Check className="w-5 h-5 text-green-600" strokeWidth={3} />
+            {/* Indicators aligned to top-left */}
+            <div className="absolute top-4 left-4 flex gap-2 z-20">
+              {isCollected && (
+                <div className="bg-white/90 backdrop-blur-md p-1.5 rounded-full border border-green-200 shadow-sm" title="¡Ya descubierto!">
+                  <Check className="w-5 h-5 text-green-600" strokeWidth={3} />
+                </div>
+              )}
+              {isLocked && !isCollected && (
+                <div className="bg-white/90 backdrop-blur-md p-1.5 rounded-full border border-gray-200 shadow-sm" title="Bloqueado">
+                  <Lock className="w-5 h-5 text-gray-500" strokeWidth={2} />
+                </div>
+              )}
             </div>
-          )}
 
-          {isLocked && !isCollected && (
-            <div className="absolute top-4 left-4 bg-gray-100/80 backdrop-blur-sm p-1.5 rounded-full border border-gray-200 shadow-sm" title="Bloqueado">
-              <Lock className="w-5 h-5 text-gray-500" strokeWidth={2} />
+            {/* Heart Stamp top-right */}
+            <div className="absolute top-4 right-4 bg-white/30 backdrop-blur-sm p-2 rounded-full z-20">
+              <Heart className="w-6 h-6 text-white fill-white/80" />
             </div>
-          )}
+          </div>
 
-          <div className="absolute bottom-6 font-sans text-xs uppercase tracking-widest opacity-50 text-slate-500">
-            Tap to Flip
+          {/* Bottom Text Section */}
+          <div className="relative h-[40%] bg-transparent flex flex-col items-center justify-center p-4 group-hover:h-[35%] transition-all duration-500">
+            {/* Floating Emoji Badge */}
+            <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg border-4 border-white z-10 group-hover:scale-110 transition-transform">
+              <span className="text-3xl">{ticket.emoji}</span>
+            </div>
+
+            <div className="text-center mt-6">
+              <h3 className="font-handwritten text-4xl sm:text-5xl text-slate-800 tracking-wide rotate-[-2deg]">
+                {ticket.category === 'Picante' ? 'Solo para ti...' : 'Vale por...'}
+              </h3>
+              <div className="mt-3 w-24 h-1.5 bg-valentine-400 mx-auto rounded-full opacity-60"></div>
+            </div>
+
+            <div className="absolute bottom-4 font-sans text-[10px] uppercase tracking-widest opacity-40 text-slate-500">
+              Tap to Flip
+            </div>
           </div>
         </div>
 
@@ -257,12 +270,12 @@ const DateCard: React.FC<DateCardProps> = ({ ticket, isCollected, isLocked, unlo
                     <Share2 size={16} />
                   </motion.button>
 
-                  <div className="flex-1 flex flex-col items-center justify-center">
-                    <span className="text-5xl mb-4 block drop-shadow-sm">{ticket.emoji}</span>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-4 font-handwritten leading-tight">
+                  <div className="flex-1 flex flex-col items-center justify-center p-4">
+                    <span className="text-6xl mb-6 block drop-shadow-sm">{ticket.emoji}</span>
+                    <h3 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6 font-handwritten leading-tight">
                       {ticket.title}
                     </h3>
-                    <p className="text-gray-600 text-base leading-relaxed font-medium px-2">
+                    <p className="text-gray-600 text-lg sm:text-xl leading-relaxed font-medium px-4">
                       {ticket.description}
                     </p>
                   </div>

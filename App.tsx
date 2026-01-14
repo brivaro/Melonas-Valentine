@@ -8,7 +8,7 @@ import { Category } from './types';
 // --- CONFIG ---
 // Set to TRUE to unlock everything immediately (for testing)
 // Set to FALSE for the real experience starting Feb 14th
-const DEBUG_MODE = true;
+const DEBUG_MODE = false;
 
 const App: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

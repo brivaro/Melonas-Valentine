@@ -7,6 +7,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Cena Romántica',
     description: 'Vale por una cena a la luz de las velas en tu restaurante favorito (o cocinada por mí).',
     category: 'Romántico',
+    image: '/icon/1.png',
   },
   {
     id: '2',
@@ -14,6 +15,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Picnic Sorpresa',
     description: 'Un día de sol, bocadillos ricos y naturaleza. Yo me encargo de la cesta.',
     category: 'Aventura',
+    image: '/icon/2.png',
   },
   {
     id: '3',
@@ -21,6 +23,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Cine y Manta',
     description: 'Maratón de tus películas favoritas con palomitas ilimitadas y abrazos.',
     category: 'Pareja',
+    image: '/icon/3.png',
   },
   {
     id: '4',
@@ -28,6 +31,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Tarde Creativa',
     description: 'Vamos a pintar cerámica, un cuadro o hacer manualidades juntos (con algo rico para tomar, claro).',
     category: 'Aventura',
+    image: '/icon/4.png',
   },
   {
     id: '5',
@@ -35,6 +39,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Masaje Relajante',
     description: 'Sesión de masaje de cuerpo completo de 30 minutos con aceite y música suave.',
     category: 'Romántico',
+    image: '/icon/5.png',
   },
   {
     id: '6',
@@ -42,6 +47,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Desayuno en la Cama',
     description: 'Te despiertas y el desayuno está listo. Tortitas, fruta y café recién hecho.',
     category: 'Romántico',
+    image: '/icon/6.png',
   },
   {
     id: '7',
@@ -49,6 +55,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Escape Room',
     description: 'Ponemos a prueba nuestro equipo resolviendo misterios antes de que se acabe el tiempo.',
     category: 'Aventura',
+    image: '/icon/7.png',
   },
   {
     id: '8',
@@ -56,6 +63,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Noche de Pizza y Juegos',
     description: 'Pedimos pizza guarra y jugamos a juegos de mesa (o videojuegos) hasta tarde.',
     category: 'Pareja',
+    image: '/icon/8.png',
   },
   {
     id: '9',
@@ -63,6 +71,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Baño de Espuma',
     description: 'Baño caliente juntos, muchas burbujas, vino y tal vez algo más...',
     category: 'Picante',
+    image: '/icon/9.png',
   },
   {
     id: '10',
@@ -70,6 +79,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Aventura Espontánea',
     description: 'Nos subimos al coche/tren y vamos a un lugar nuevo sin planear nada.',
     category: 'Aventura',
+    image: '/icon/10.png',
   },
   {
     id: '11',
@@ -77,6 +87,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Ver las Estrellas',
     description: 'Buscamos un sitio oscuro, nos tumbamos y miramos el cielo juntos.',
     category: 'Romántico',
+    image: '/icon/11.png',
   },
   {
     id: '12',
@@ -84,6 +95,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Fantasía Cumplida',
     description: 'Esta noche tú mandas. Elige una fantasía y yo la hago realidad.',
     category: 'Picante',
+    image: '/icon/12.png',
   },
   {
     id: '13',
@@ -91,6 +103,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Cata Privada',
     description: 'Te invito a una cata privada de bombones. Nuestra propia cata dulce en casa.',
     category: 'Aventura',
+    image: '/icon/13.png',
   },
   {
     id: '14',
@@ -98,6 +111,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Mario Kart Strip',
     description: 'Jugamos al Mario Kart (o juego que elijas). Quien pierde, se quita una prenda.',
     category: 'Picante',
+    image: '/icon/14.png',
   },
   {
     id: '15',
@@ -105,6 +119,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Clase de Baile',
     description: 'Vamos a una clase de salsa/bachata o ponemos YouTube y hacemos el ridículo juntos en el salón.',
     category: 'Aventura',
+    image: '/icon/15.png',
   },
   {
     id: '16',
@@ -112,6 +127,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Recrear 1ª Cita',
     description: 'Volvemos al lugar donde tuvimos nuestra primera cita e intentamos vestirnos igual.',
     category: 'Romántico',
+    image: '/icon/16.png',
   },
   {
     id: '17',
@@ -119,6 +135,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Postre Sorpresa',
     description: 'El día que tú me digas, aparezco con un postre delicioso por sorpresa.',
     category: 'Romántico',
+    image: '/icon/17.png',
   },
   {
     id: '18',
@@ -126,6 +143,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Soy Todo Oídos',
     description: 'Una hora para que me cuentes lo que quieras (cotilleos, quejas, sueños) y yo solo escucho y te doy la razón.',
     category: 'Pareja',
+    image: '/icon/18.png',
   },
   {
     id: '19',
@@ -133,5 +151,6 @@ export const dateTickets: DateTicket[] = [
     title: 'Comodín Melona',
     description: 'Vale por LO QUE TÚ QUIERAS. Úsalo sabiamente.',
     category: 'Pareja',
+    image: '/icon/19.png',
   },
 ];

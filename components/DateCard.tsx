@@ -129,8 +129,19 @@ const DateCard: React.FC<DateCardProps> = ({ ticket, isCollected, isLocked, unlo
         <div className={`absolute w-full h-full backface-hidden rounded-3xl backdrop-blur-md border shadow-xl flex flex-col items-center justify-center p-6 ${getGlowColor()} transition-colors duration-300`}>
           <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/60 to-white/20 pointer-events-none" />
 
-          <div className="z-10 text-8xl mb-6 drop-shadow-lg filter animate-bounce-slow">
-            {ticket.emoji}
+
+          <div className="z-10 mb-6 drop-shadow-lg filter animate-bounce-slow relative">
+            {ticket.image ? (
+              <img
+                src={ticket.image}
+                alt={ticket.title}
+                className="w-48 h-48 object-cover rounded-full border-4 border-white shadow-md mx-auto"
+              />
+            ) : (
+              <div className="text-8xl">
+                {ticket.emoji}
+              </div>
+            )}
           </div>
           <div className="z-10 text-center relative">
             <h3 className="font-handwritten text-3xl text-slate-800 tracking-wide rotate-[-2deg]">

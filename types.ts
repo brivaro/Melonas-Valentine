@@ -6,4 +6,5 @@ export interface DateTicket {
   title: string; // Short title
   description: string; // The full plan revealed on the back
   category: Category;
+  image: string; // Path to the image file
 }

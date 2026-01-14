@@ -26,7 +26,7 @@ export const dateTickets: DateTicket[] = [
     id: '4',
     emoji: '🎨',
     title: 'Tarde Creativa',
-    description: 'Vamos a pintar cerámica, un cuadro o hacer manualidades juntos (con vino, claro).',
+    description: 'Vamos a pintar cerámica, un cuadro o hacer manualidades juntos (con algo rico para tomar, claro).',
     category: 'Aventura',
   },
   {
@@ -87,16 +87,16 @@ export const dateTickets: DateTicket[] = [
   },
   {
     id: '13',
-    emoji: '🍷',
+    emoji: '🍫',
     title: 'Cata Privada',
-    description: 'Compramos 3 vinos (o cervezas) diferentes, quesos buenos y hacemos nuestra propia cata en casa.',
+    description: 'Te invito a una cata privada de bombones. Nuestra propia cata dulce en casa.',
     category: 'Aventura',
   },
   {
     id: '14',
     emoji: '🏎️',
     title: 'Mario Kart Strip',
-    description: 'Jugamos al Mario Kart (o juego de lucha). Quien pierde la carrera, se quita una prenda.',
+    description: 'Jugamos al Mario Kart (o juego que elijas). Quien pierde, se quita una prenda.',
     category: 'Picante',
   },
   {
@@ -115,6 +115,20 @@ export const dateTickets: DateTicket[] = [
   },
   {
     id: '17',
+    emoji: '🍩',
+    title: 'Postre Sorpresa',
+    description: 'El día que tú me digas, aparezco con un postre delicioso por sorpresa.',
+    category: 'Romántico',
+  },
+  {
+    id: '18',
+    emoji: '👂',
+    title: 'Soy Todo Oídos',
+    description: 'Una hora para que me cuentes lo que quieras (cotilleos, quejas, sueños) y yo solo escucho y te doy la razón.',
+    category: 'Pareja',
+  },
+  {
+    id: '19',
     emoji: '🃏',
     title: 'Comodín Melona',
     description: 'Vale por LO QUE TÚ QUIERAS. Úsalo sabiamente.',

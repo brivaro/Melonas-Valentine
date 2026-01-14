@@ -1,2 +1,2 @@
 # Melonas-Valentine
-👼💘 Jugeo de tarjetas de San Valentín
+👼💘 Juego de tarjetas de San Valentín

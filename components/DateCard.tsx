@@ -264,10 +264,10 @@ const DateCard: React.FC<DateCardProps> = ({ ticket, isCollected, isLocked, unlo
                     transition={{ delay: 0.5 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={handleShare}
-                    className="absolute -top-1 -right-1 p-2 bg-green-50 text-green-600 rounded-full hover:bg-green-100 hover:text-green-700 transition-colors shadow-sm border border-green-200 z-50"
+                    className="absolute -top-2 -right-2 p-3 bg-green-50 text-green-600 rounded-full hover:bg-green-100 hover:text-green-700 transition-colors shadow-md border border-green-200 z-50 touch-manipulation"
                     title="Enviar por WhatsApp"
                   >
-                    <Share2 size={16} />
+                    <Share2 size={22} />
                   </motion.button>
 
                   <div className="flex-1 flex flex-col items-center justify-center p-4">

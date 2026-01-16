@@ -55,7 +55,7 @@ const PasswordLock: React.FC<PasswordLockProps> = ({ onSuccess }) => {
     const SLOTS = 6;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-md p-4 pb-[30vh] md:pb-2">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-md p-4 pb-[20vh]">
 
             {/* Main Password UI */}
             {!showPichiModal && (

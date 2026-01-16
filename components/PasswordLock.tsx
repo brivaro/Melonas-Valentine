@@ -10,15 +10,12 @@ interface PasswordLockProps {
 const PasswordLock: React.FC<PasswordLockProps> = ({ onSuccess }) => {
     const [input, setInput] = useState('');
     const [showPichiModal, setShowPichiModal] = useState(false);
+    const [isFocused, setIsFocused] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    // Focus input automatically on mount and keep proper focus
+    // Focus input automatically on mount
     useEffect(() => {
         inputRef.current?.focus();
-
-        const handleFocus = () => inputRef.current?.focus();
-        window.addEventListener('click', handleFocus);
-        return () => window.removeEventListener('click', handleFocus);
     }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,7 +52,11 @@ const PasswordLock: React.FC<PasswordLockProps> = ({ onSuccess }) => {
     const SLOTS = 6;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-md p-4 pb-[20vh]">
+        <div
+            className={`fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-md p-4 transition-all duration-300 ${isFocused ? 'pb-[40vh] md:pb-4' : 'pb-4'
+                }`}
+            onClick={() => inputRef.current?.focus()}
+        >
 
             {/* Main Password UI */}
             {!showPichiModal && (
@@ -63,7 +64,10 @@ const PasswordLock: React.FC<PasswordLockProps> = ({ onSuccess }) => {
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     className="bg-white/90 backdrop-blur-xl p-8 rounded-3xl shadow-2xl flex flex-col items-center gap-8 w-full max-w-md relative overflow-hidden"
-                    onClick={() => inputRef.current?.focus()}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        inputRef.current?.focus();
+                    }}
                 >
                     {/* Header */}
                     <div className="flex flex-col items-center gap-2">
@@ -84,6 +88,8 @@ const PasswordLock: React.FC<PasswordLockProps> = ({ onSuccess }) => {
                             type="text"
                             value={input}
                             onChange={handleChange}
+                            onFocus={() => setIsFocused(true)}
+                            onBlur={() => setIsFocused(false)}
                             className="absolute opacity-0 inset-0 w-full h-full cursor-pointer caret-transparent"
                             autoComplete="off"
                             autoFocus

@@ -3,7 +3,7 @@ import { motion, AnimatePresence, Variants } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { dateTickets } from './data';
 import DateCard from './components/DateCard';
-import { ChevronLeft, ChevronRight, Heart, CheckCircle, Filter, CalendarHeart, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Heart, CheckCircle, Filter, CalendarHeart, X, Trophy } from 'lucide-react';
 import { Category } from './types';
 
 // --- CONFIG ---
@@ -150,10 +150,16 @@ const App: React.FC = () => {
 
   // Check if all cards are revealed
   const isCompleted = revealedIds.length === dateTickets.length && dateTickets.length > 0;
+  const [showCelebration, setShowCelebration] = useState(false);
 
   // Trigger celebration when completed
   React.useEffect(() => {
     if (isCompleted) {
+      // Delay showing the celebration modal
+      const timer = setTimeout(() => {
+        setShowCelebration(true);
+      }, 2000);
+
       const duration = 3 * 1000;
       const animationEnd = Date.now() + duration;
       const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 60 };
@@ -172,7 +178,10 @@ const App: React.FC = () => {
         confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
       }, 250);
 
-      return () => clearInterval(interval);
+      return () => {
+        clearInterval(interval);
+        clearTimeout(timer);
+      };
     }
   }, [isCompleted]);
 
@@ -339,7 +348,16 @@ const App: React.FC = () => {
             </div>
 
             {/* NEW Filter Toggle Button */}
-            <div className="relative mt-2">
+            <div className="relative mt-2 flex gap-2">
+              {isCompleted && (
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowCelebration(true)}
+                  className="bg-yellow-400 text-white p-2 rounded-full shadow-md border border-yellow-500 hover:bg-yellow-500 transition-colors"
+                >
+                  <Trophy size={18} />
+                </motion.button>
+              )}
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsFilterOpen(!isFilterOpen)}

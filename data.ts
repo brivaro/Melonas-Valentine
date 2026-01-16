@@ -203,7 +203,7 @@ export const dateTickets: DateTicket[] = [
     id: '23',
     emoji: '🍫',
     title: 'Fábrica de Chocolate',
-    description: 'Ir a la fabrica de chocolate lindt en suiza, si puede ser sin viento.',
+    description: 'Ir a la fabrica de chocolate Lindt en Suiza, pero que no haya mucho viento (me asusta).',
     category: 'Aventura',
     image: '/icon/20.webp',
     cardLabel: 'Viaje a...',

@@ -53,7 +53,7 @@ const PasswordLock: React.FC<PasswordLockProps> = ({ onSuccess }) => {
 
     return (
         <div
-            className={`fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-md p-4 transition-all duration-300 ${isFocused ? 'pb-[10vh] md:pb-4' : 'pb-4'
+            className={`fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-md p-4 transition-all duration-300 ${isFocused ? 'pb-[10vh] md:pb-2' : 'pb-2'
                 }`}
             onClick={() => inputRef.current?.focus()}
         >

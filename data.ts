@@ -7,7 +7,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Cena Romántica',
     description: 'Vale por una cena a la luz de las velas en el restaurante que elijas y no hayamos ido antes (o cena cocinada por el chef Brian).',
     category: 'Romántico',
-    image: '/icon/1.png',
+    image: '/icon/1.webp',
     cardLabel: 'Vale por...',
   },
   {
@@ -16,7 +16,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Picnic Sorpresa',
     description: 'Un día de sol, bocadillos ricos y naturaleza. Yo me encargo de la cesta.',
     category: 'Aventura',
-    image: '/icon/2.png',
+    image: '/icon/2.webp',
     cardLabel: 'Plan de...',
   },
   {
@@ -25,7 +25,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Tarde Creativa',
     description: 'Vamos a pintar cerámica, un cuadro o hacer manualidades juntos (con algo rico para tomar, claro).',
     category: 'Aventura',
-    image: '/icon/4.png',
+    image: '/icon/4.webp',
     cardLabel: 'Plan de...',
   },
   {
@@ -34,7 +34,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Cine y Manta',
     description: 'Maratón de películas y series con palomitas y abrazos ilimitados.',
     category: 'Pareja',
-    image: '/icon/3.png',
+    image: '/icon/3.webp',
     cardLabel: 'Plan de...',
   },
   {
@@ -43,7 +43,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Masaje Relajante',
     description: 'Sesión de masaje de cuerpo completo realizado por mí con aceite y música suave.',
     category: 'Romántico',
-    image: '/icon/5.png',
+    image: '/icon/5.webp',
     cardLabel: 'Vale por...',
   },
   {
@@ -52,7 +52,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Spa y Desayuno',
     description: 'Ir otra vez al spa pero esta vez coordinándonos bien y luego a desayunar rico.',
     category: 'Romántico',
-    image: '/icon/23.png',
+    image: '/icon/23.webp',
     cardLabel: 'Plan de...',
   },
   {
@@ -61,7 +61,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Desayuno en la Cama',
     description: 'Te despiertas y el desayuno está listo. Tortitas, fruta, café, lo que quieras.',
     category: 'Romántico',
-    image: '/icon/6.png',
+    image: '/icon/6.webp',
     cardLabel: 'Vale por...',
   },
   {
@@ -70,7 +70,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Escape Room',
     description: 'Ponemos a prueba nuestro equipo resolviendo misterios antes de que se acabe el tiempo.',
     category: 'Aventura',
-    image: '/icon/7.png',
+    image: '/icon/7.webp',
     cardLabel: 'Plan de...',
   },
   {
@@ -79,7 +79,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Noche de Pizza y Juegos',
     description: 'Pedimos pizza y jugamos a juegos de mesa (o videojuegos) hasta tarde. Me traigo la consola.',
     category: 'Pareja',
-    image: '/icon/8.png',
+    image: '/icon/8.webp',
     cardLabel: 'Plan de...',
   },
   {
@@ -88,7 +88,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Baño de Espuma',
     description: 'Baño caliente juntos, muchas burbujas y tal vez algo más... Falta la bañera.',
     category: 'Picante',
-    image: '/icon/9.png',
+    image: '/icon/9.webp',
     cardLabel: 'Solo para ti...',
   },
   {
@@ -97,7 +97,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Aventura Espontánea',
     description: 'Nos subimos al coche/tren y vamos a un lugar nuevo sin planear nada.',
     category: 'Aventura',
-    image: '/icon/10.png',
+    image: '/icon/10.webp',
     cardLabel: 'Plan de...',
   },
   {
@@ -106,7 +106,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Casa Rural',
     description: 'Alquilar casita rural, tengo varias apuntadas, pero por favor que no haya mucho viento (me asusta).',
     category: 'Romántico',
-    image: '/icon/25.png',
+    image: '/icon/25.webp',
     cardLabel: 'Plan de...',
   },
   {
@@ -115,7 +115,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Autocine',
     description: 'Ir al autocine a ver una peli, yo llevo las mantas y las palomitas.',
     category: 'Pareja',
-    image: '/icon/24.png',
+    image: '/icon/24.webp',
     cardLabel: 'Plan de...',
   },
   {
@@ -124,7 +124,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Ver las Estrellas',
     description: 'Buscamos un sitio oscuro, nos tumbamos y miramos el cielo juntos.',
     category: 'Romántico',
-    image: '/icon/11.png',
+    image: '/icon/11.webp',
     cardLabel: 'Plan de...',
   },
   {
@@ -133,7 +133,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Fantasía Cumplida',
     description: 'Esta noche tú mandas. Elige una fantasía y yo la hago realidad.',
     category: 'Picante',
-    image: '/icon/12.png',
+    image: '/icon/12.webp',
     cardLabel: 'Solo para ti...',
   },
   {
@@ -142,7 +142,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Cata Privada',
     description: 'Te invito a una cata privada de bombones. Nuestra propia cata dulce en casa.',
     category: 'Aventura',
-    image: '/icon/13.png',
+    image: '/icon/13.webp',
     cardLabel: 'Vale por...',
   },
   {
@@ -151,7 +151,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Chefs por un Día',
     description: 'Cocinamos algo nuevo juntos.',
     category: 'Pareja',
-    image: '/icon/26.png',
+    image: '/icon/26.webp',
     cardLabel: 'Plan de...',
   },
   {
@@ -160,7 +160,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Mario Kart Strip',
     description: 'Jugamos al Mario Kart (o juego que elijas). Quien pierde, se quita una prenda.',
     category: 'Picante',
-    image: '/icon/14.png',
+    image: '/icon/14.webp',
     cardLabel: 'Solo para ti...',
   },
   {
@@ -169,7 +169,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Clase de Baile',
     description: 'Vamos a una clase de salsa/bachata o ponemos YouTube y hacemos el ridículo juntos en el salón.',
     category: 'Aventura',
-    image: '/icon/15.png',
+    image: '/icon/15.webp',
     cardLabel: 'Vale por...',
   },
   {
@@ -178,7 +178,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Recrear 1ª Cita',
     description: 'Volvemos al lugar donde tuvimos nuestra primera cita e intentamos vestirnos igual.',
     category: 'Romántico',
-    image: '/icon/16.png',
+    image: '/icon/16.webp',
     cardLabel: 'Plan de...',
   },
   {
@@ -187,7 +187,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Postre Sorpresa',
     description: 'El día que tú me digas, aparezco con un postre delicioso por sorpresa.',
     category: 'Romántico',
-    image: '/icon/17.png',
+    image: '/icon/17.webp',
     cardLabel: 'Vale por...',
   },
   {
@@ -196,7 +196,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Soy Todo Oídos',
     description: 'Una hora para que me cuentes lo que quieras (cotilleos, quejas, sueños) y yo solo escucho y te doy la razón.',
     category: 'Pareja',
-    image: '/icon/18.png',
+    image: '/icon/18.webp',
     cardLabel: 'Vale por...',
   },
   {
@@ -205,7 +205,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Fábrica de Chocolate',
     description: 'Ir a la fabrica de chocolate lindt en suiza, si puede ser sin viento.',
     category: 'Aventura',
-    image: '/icon/20.png',
+    image: '/icon/20.webp',
     cardLabel: 'Viaje a...',
   },
   {
@@ -214,7 +214,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Día de Surf',
     description: 'Ir a surfear, pero que no haya mucho viento (me asusta).',
     category: 'Aventura',
-    image: '/icon/21.png',
+    image: '/icon/21.webp',
     cardLabel: 'Plan de...',
   },
   {
@@ -223,7 +223,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Viaje a Japón',
     description: 'Ir a Japón, pero que no haya mucho viento (me asusta).',
     category: 'Aventura',
-    image: '/icon/22.png',
+    image: '/icon/22.webp',
     cardLabel: 'Viaje a...',
   },
   {
@@ -232,7 +232,7 @@ export const dateTickets: DateTicket[] = [
     title: 'Comodín Melona',
     description: 'Vale por LO QUE TÚ QUIERAS. Úsalo sabiamente.',
     category: 'Pareja',
-    image: '/icon/19.png',
+    image: '/icon/19.webp',
     cardLabel: 'Vale por ...',
   },
 ];

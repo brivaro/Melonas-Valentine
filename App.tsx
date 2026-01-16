@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
+import confetti from 'canvas-confetti';
 import { dateTickets } from './data';
 import DateCard from './components/DateCard';
 import { ChevronLeft, ChevronRight, Heart, CheckCircle, Filter, CalendarHeart, X } from 'lucide-react';
@@ -130,6 +131,51 @@ const App: React.FC = () => {
 
   const categories = ['Todos', 'Romántico', 'Aventura', 'Picante', 'Pareja'];
 
+  // Welcome Modal Logic
+  const [showWelcome, setShowWelcome] = useState(false);
+
+  React.useEffect(() => {
+    if (isAuthenticated) {
+      const hasSeenWelcome = localStorage.getItem('valentine_welcome_seen');
+      if (!hasSeenWelcome) {
+        setShowWelcome(true);
+      }
+    }
+  }, [isAuthenticated]);
+
+  const closeWelcome = () => {
+    localStorage.setItem('valentine_welcome_seen', 'true');
+    setShowWelcome(false);
+  };
+
+  // Check if all cards are revealed
+  const isCompleted = revealedIds.length === dateTickets.length && dateTickets.length > 0;
+
+  // Trigger celebration when completed
+  React.useEffect(() => {
+    if (isCompleted) {
+      const duration = 3 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 60 };
+
+      const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
+
+      const interval: any = setInterval(function () {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+      }, 250);
+
+      return () => clearInterval(interval);
+    }
+  }, [isCompleted]);
+
   return (
     <div className="relative h-[100dvh] w-screen overflow-hidden bg-pink-50 selection:bg-valentine-200 flex flex-col items-center justify-center">
 
@@ -139,6 +185,107 @@ const App: React.FC = () => {
             localStorage.setItem('valentine_auth_time', Date.now().toString());
             setIsAuthenticated(true);
           }} />
+        )}
+      </AnimatePresence>
+
+      {/* Welcome Modal */}
+      <AnimatePresence>
+        {showWelcome && isAuthenticated && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[45] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.8, opacity: 0, y: 20 }}
+              className="bg-white p-8 rounded-3xl shadow-2xl max-w-md w-full relative overflow-hidden text-center"
+            >
+              <div className="flex justify-center mb-4">
+                <div className="w-20 h-20 bg-valentine-100 rounded-full flex items-center justify-center">
+                  <motion.div
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <span className="text-4xl">🍉</span>
+                  </motion.div>
+                </div>
+              </div>
+
+              <h2 className="font-handwritten text-3xl text-valentine-600 mb-4">¡Bienvenida mi Melona!</h2>
+
+              <div className="text-slate-600 space-y-4 text-sm md:text-base leading-relaxed mb-8">
+                <p>
+                  Cada tarjeta de este calendario especial guarda un <strong>plan o sorpresa romántica</strong> pensado solo para nosotros.
+                </p>
+                <p>
+                  Tu misión es coleccionarlas todas y compartirlas con tu melón para que juntos hagamos realidad cada momento. 💖
+                </p>
+                <p className="font-medium text-valentine-500">
+                  ¿Lista para descubrir tu regalo?
+                </p>
+              </div>
+
+              <button
+                onClick={closeWelcome}
+                className="w-full py-3 bg-valentine-500 hover:bg-valentine-600 text-white rounded-xl font-bold shadow-lg shadow-valentine-200 transition-all active:scale-95"
+              >
+                ¡Empezar Aventura! 🚀
+              </button>
+
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Completion Overlay */}
+      <AnimatePresence>
+        {isCompleted && isAuthenticated && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="bg-white/90 backdrop-blur-xl p-6 md:p-10 rounded-[2.5rem] shadow-2xl flex flex-col items-center text-center max-w-lg w-full relative overflow-hidden"
+            >
+              {/* Confetti canvas is handled by library global */}
+
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-red-400 via-pink-500 to-red-400" />
+
+              <h2 className="font-handwritten text-4xl md:text-5xl text-valentine-600 mb-6 drop-shadow-sm">
+                ¡Felicidades Melona! 🍉
+              </h2>
+
+              <div className="relative w-48 h-48 md:w-64 md:h-64 mb-6 rounded-2xl overflow-hidden shadow-lg transform rotate-3 border-4 border-white">
+                <img
+                  src="/icon/end.webp"
+                  alt="Celebration"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <p className="text-slate-600 text-lg md:text-xl font-medium mb-8 leading-relaxed">
+                Has descubierto todas las cartas sorpresa.<br />
+                ¡Prepárate para un San Valentín y Aniversario inolvidable! 💖<br />
+                Compárteme las tarjetas para preparar el evento juntos.
+              </p>
+
+              <button
+                onClick={() => setRevealedIds([])} // Optional: Reset or just close
+                className="px-8 py-3 bg-valentine-500 hover:bg-valentine-600 text-white rounded-xl font-bold shadow-lg shadow-valentine-200 transition-all active:scale-95 flex items-center gap-2"
+              >
+                <Heart className="fill-white" />
+                <span>Volver a verlas</span>
+              </button>
+
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
 

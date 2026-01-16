@@ -1,15 +1,15 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { dateTickets } from './data';
 import DateCard from './components/DateCard';
-import { ChevronLeft, ChevronRight, Heart, CheckCircle, Filter, CalendarHeart, X, Trophy } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Heart, CheckCircle, Filter, CalendarHeart, X, Trophy, Trash } from 'lucide-react';
 import { Category } from './types';
 
 // --- CONFIG ---
 // Set to TRUE to unlock everything immediately (for testing)
 // Set to FALSE for the real experience starting Feb 14th
-const DEBUG_MODE = false;
+const DEBUG_MODE = true;
 const SESSION_DURATION = 1000 * 60 * 60; // 1 hour
 
 import PasswordLock from './components/PasswordLock';
@@ -52,9 +52,11 @@ const App: React.FC = () => {
   };
 
   const markAsRevealed = (id: string) => {
-    if (!revealedIds.includes(id)) {
-      setRevealedIds((prev) => [...prev, id]);
-    }
+    setRevealedIds((prev) => {
+      // Prevent double counting if already present
+      if (prev.includes(id)) return prev;
+      return [...prev, id];
+    });
   };
 
   // --- DATE UNLOCK LOGIC ---
@@ -134,7 +136,7 @@ const App: React.FC = () => {
   // Welcome Modal Logic
   const [showWelcome, setShowWelcome] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isAuthenticated) {
       const hasSeenWelcome = localStorage.getItem('valentine_welcome_seen');
       if (!hasSeenWelcome) {
@@ -152,14 +154,19 @@ const App: React.FC = () => {
   const isCompleted = revealedIds.length === dateTickets.length && dateTickets.length > 0;
   const [showCelebration, setShowCelebration] = useState(false);
 
-  // Trigger celebration when completed
-  React.useEffect(() => {
+  // Trigger celebration timer when completed
+  useEffect(() => {
     if (isCompleted) {
-      // Delay showing the celebration modal
       const timer = setTimeout(() => {
         setShowCelebration(true);
       }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [isCompleted]);
 
+  // Handle Confetti when celebration opens
+  useEffect(() => {
+    if (showCelebration) {
       const duration = 3 * 1000;
       const animationEnd = Date.now() + duration;
       const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 60 };
@@ -178,12 +185,9 @@ const App: React.FC = () => {
         confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
       }, 250);
 
-      return () => {
-        clearInterval(interval);
-        clearTimeout(timer);
-      };
+      return () => clearInterval(interval);
     }
-  }, [isCompleted]);
+  }, [showCelebration]);
 
   return (
     <div className="relative h-[100dvh] w-screen overflow-hidden bg-pink-50 selection:bg-valentine-200 flex flex-col items-center justify-center">
@@ -251,11 +255,11 @@ const App: React.FC = () => {
 
       {/* Completion Overlay */}
       <AnimatePresence>
-        {isCompleted && isAuthenticated && (
+        {showCelebration && isAuthenticated && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
           >
             <motion.div
               initial={{ scale: 0.5, opacity: 0 }}
@@ -263,6 +267,13 @@ const App: React.FC = () => {
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               className="bg-white/90 backdrop-blur-xl p-6 md:p-10 rounded-[2.5rem] shadow-2xl flex flex-col items-center text-center max-w-lg w-full relative overflow-hidden"
             >
+              <button
+                onClick={() => setShowCelebration(false)}
+                className="absolute top-4 right-4 p-2 bg-black/5 hover:bg-black/10 rounded-full transition-colors text-slate-500"
+              >
+                <X size={24} />
+              </button>
+
               {/* Confetti canvas is handled by library global */}
 
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-red-400 via-pink-500 to-red-400" />
@@ -285,13 +296,24 @@ const App: React.FC = () => {
                 Compárteme las tarjetas para preparar el evento juntos.
               </p>
 
-              <button
-                onClick={() => setRevealedIds([])} // Optional: Reset or just close
-                className="px-8 py-3 bg-valentine-500 hover:bg-valentine-600 text-white rounded-xl font-bold shadow-lg shadow-valentine-200 transition-all active:scale-95 flex items-center gap-2"
-              >
-                <Heart className="fill-white" />
-                <span>Volver a verlas</span>
-              </button>
+              <div className="flex gap-4">
+                {/* Replay Button Inside Modal (Optional but nice) */}
+                <button
+                  onClick={() => setShowCelebration(false)} /* Close to see dashboard or maybe just re-trigger? But close is better ux */
+                  className="px-6 py-3 bg-white text-valentine-600 border-2 border-valentine-100 rounded-xl font-bold shadow-sm hover:bg-valentine-50 transition-all"
+                >
+                  <Trash className="fill-white/20" />
+                  Empezar de cero
+                </button>
+
+                <button
+                  onClick={() => setRevealedIds([])}
+                  className="px-8 py-3 bg-valentine-500 hover:bg-valentine-600 text-white rounded-xl font-bold shadow-lg shadow-valentine-200 transition-all active:scale-95 flex items-center gap-2"
+                >
+                  <CalendarHeart className="fill-white/20" />
+                  <span>Ver colección</span>
+                </button>
+              </div>
 
             </motion.div>
           </motion.div>

@@ -18,7 +18,7 @@ const DateCard: React.FC<DateCardProps> = ({ ticket, isCollected, isLocked, unlo
 
   useEffect(() => {
     setIsFlipped(false);
-    setIsRevealed(false);
+    setIsRevealed(isCollected);
   }, [ticket.id]);
 
   const handleFlip = () => {
@@ -132,9 +132,8 @@ const DateCard: React.FC<DateCardProps> = ({ ticket, isCollected, isLocked, unlo
       <motion.div
         className={`w-full h-full relative preserve-3d transition-all duration-500`}
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
+        transition={{ duration: 0.4, type: "spring", stiffness: 260, damping: 20 }}
       >
-        {/* --- FRONT FACE --- */}
         {/* --- FRONT FACE --- */}
         <div className={`absolute w-full h-full backface-hidden rounded-3xl shadow-xl overflow-hidden flex flex-col ${getGlowColor()} !bg-white transition-colors duration-300`}>
 

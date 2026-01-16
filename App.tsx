@@ -290,7 +290,7 @@ const App: React.FC = () => {
         </div>
 
         {/* Footer/Navigation Info */}
-        <div className="flex flex-col items-center gap-3 pb-6 px-4 z-10">
+        <div className="flex flex-col items-center gap-4 pb-2 px-4 z-10">
           {/* Simple visual indicator of lock status if needed */}
           {lockStatus.locked && !DEBUG_MODE && (
             <div className="text-xs font-medium text-gray-500 bg-white/50 px-3 py-1 rounded-full flex items-center gap-1">

@@ -40,10 +40,19 @@ const DateCard: React.FC<DateCardProps> = ({ ticket, isCollected, isLocked, unlo
     const x = (rect.left + rect.width / 2) / window.innerWidth;
     const y = (rect.top + rect.height / 2) / window.innerHeight;
 
-    const scalar = 3;
+    const scalar = 4;
     const heartShape = confetti.shapeFromText({ text: '❤️', scalar });
     const kissShape = confetti.shapeFromText({ text: '💋', scalar });
     const roseShape = confetti.shapeFromText({ text: '🌹', scalar });
+    const starShape = confetti.shapeFromText({ text: '⭐', scalar });
+    const diamondShape = confetti.shapeFromText({ text: '💎', scalar });
+    const cupidShape = confetti.shapeFromText({ text: '💘', scalar });
+    const bearShape = confetti.shapeFromText({ text: '🐻', scalar });
+    const chickenShape = confetti.shapeFromText({ text: '🐣', scalar });
+    const rabbitShape = confetti.shapeFromText({ text: '🐰', scalar });
+    const koalaShape = confetti.shapeFromText({ text: '🐨', scalar });
+    const pandaShape = confetti.shapeFromText({ text: '🐼', scalar });
+    const frogShape = confetti.shapeFromText({ text: '🐸', scalar });
 
     // Burst 1: Particles
     confetti({
@@ -60,7 +69,7 @@ const DateCard: React.FC<DateCardProps> = ({ ticket, isCollected, isLocked, unlo
       particleCount: 15,
       spread: 60,
       origin: { x, y },
-      shapes: [heartShape, kissShape, roseShape],
+      shapes: [heartShape, kissShape, roseShape, starShape, diamondShape, cupidShape, bearShape, chickenShape, rabbitShape, koalaShape, pandaShape, frogShape],
       scalar: 2,
       startVelocity: 30,
       gravity: 0.6,
@@ -119,7 +128,7 @@ const DateCard: React.FC<DateCardProps> = ({ ticket, isCollected, isLocked, unlo
   }
 
   return (
-    <div className="relative w-[90vw] max-w-[22rem] h-[65vh] max-h-[36rem] sm:w-96 sm:h-[34rem] cursor-pointer perspective-1000 group mx-auto" onClick={handleFlip}>
+    <div className="relative w-[90vw] max-w-[22rem] h-[60vh] max-h-[36rem] sm:w-96 sm:h-[34rem] cursor-pointer perspective-1000 group mx-auto" onClick={handleFlip}>
       <motion.div
         className={`w-full h-full relative preserve-3d transition-all duration-500`}
         animate={{ rotateY: isFlipped ? 180 : 0 }}
@@ -169,13 +178,13 @@ const DateCard: React.FC<DateCardProps> = ({ ticket, isCollected, isLocked, unlo
           {/* Bottom Text Section */}
           <div className="relative h-[40%] bg-transparent flex flex-col items-center justify-center p-4 group-hover:h-[35%] transition-all duration-500">
             {/* Floating Emoji Badge */}
-            <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg border-4 border-white z-10 group-hover:scale-110 transition-transform">
-              <span className="text-3xl">{ticket.emoji}</span>
+            <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg border-4 border-white z-10 group-hover:scale-110 transition-transform">
+              <span className="text-4xl">{ticket.emoji}</span>
             </div>
 
             <div className="text-center mt-6">
               <h3 className="font-handwritten text-4xl sm:text-5xl text-slate-800 tracking-wide rotate-[-2deg]">
-                {ticket.category === 'Picante' ? 'Solo para ti...' : 'Vale por...'}
+                {ticket.cardLabel}
               </h3>
               <div className="mt-3 w-24 h-1.5 bg-valentine-400 mx-auto rounded-full opacity-60"></div>
             </div>

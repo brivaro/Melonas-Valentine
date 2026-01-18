@@ -114,6 +114,8 @@ const DateCard: React.FC<DateCardProps> = ({ ticket, isCollected, isLocked, unlo
       case 'Picante': return 'hover:shadow-red-500/50 border-red-300 bg-red-50/50';
       case 'Aventura': return 'hover:shadow-orange-400/50 border-orange-300 bg-orange-50/50';
       case 'Pareja': return 'hover:shadow-purple-400/50 border-purple-300 bg-purple-50/50';
+      case 'Futuro': return 'hover:shadow-indigo-400/50 border-indigo-300 bg-indigo-50/50';
+      case 'Relax': return 'hover:shadow-teal-400/50 border-teal-300 bg-teal-50/50';
       default: return 'hover:shadow-pink-400/50 border-pink-300 bg-pink-50/50';
     }
   };
@@ -123,6 +125,8 @@ const DateCard: React.FC<DateCardProps> = ({ ticket, isCollected, isLocked, unlo
       case 'Picante': return 'bg-red-100 text-red-600';
       case 'Aventura': return 'bg-orange-100 text-orange-600';
       case 'Pareja': return 'bg-purple-100 text-purple-600';
+      case 'Futuro': return 'bg-indigo-100 text-indigo-600';
+      case 'Relax': return 'bg-teal-100 text-teal-600';
       default: return 'bg-pink-100 text-pink-600';
     }
   }

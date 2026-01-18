@@ -9,7 +9,7 @@ import { Category } from './types';
 // --- CONFIG ---
 // Set to TRUE to unlock everything immediately (for testing)
 // Set to FALSE for the real experience starting Feb 14th
-const DEBUG_MODE = true;
+const DEBUG_MODE = false;
 const SESSION_DURATION = 1000 * 60 * 60; // 1 hour
 
 import PasswordLock from './components/PasswordLock';

@@ -1,4 +1,4 @@
-export type Category = 'Romántico' | 'Aventura' | 'Picante' | 'Pareja';
+export type Category = 'Romántico' | 'Aventura' | 'Picante' | 'Pareja' | 'Futuro' | 'Relax';
 
 export interface DateTicket {
   id: string;
